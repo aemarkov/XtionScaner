@@ -50,6 +50,9 @@
     <ClCompile Include="GeneratedFiles\qrc_xtionscanner.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="XTion3DModelBuilder.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.h">
@@ -65,6 +68,9 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_xtionscanner.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="XTion3DModelBuilder.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

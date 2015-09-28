@@ -35,6 +35,7 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
@@ -91,7 +92,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
       <PreprocessorDefinitions>UNICODE;WIN32;WIN64;QT_DLL;QT_CORE_LIB;QT_GUI_LIB;QT_WIDGETS_LIB;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>.\GeneratedFiles;.;$(QTDIR)\include;.\GeneratedFiles\$(ConfigurationName);$(QTDIR)\include\QtCore;$(QTDIR)\include\QtGui;$(QTDIR)\include\QtWidgets;$(PCL_ROOT_x64)\include\pcl-1.8;$(PCL_ROOT_x64)\3rd\BOOST\include\boost-1_57;$(PCL_ROOT_x64)\3rd\EIGEN;$(PCL_ROOT_x64)\3rd\flann\include;$(PCL_ROOT_x64)\3rd\VTK\include\vtk-6.2;$(PCL_ROOT_x64)\3rd\OPENNI\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>Disabled</Optimization>
       <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
       <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
@@ -100,9 +101,9 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <OutputFile>$(OutDir)\$(ProjectName).exe</OutputFile>
-      <AdditionalLibraryDirectories>$(QTDIR)\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(QTDIR)\lib;$(PCL_ROOT_x64)\lib;$(PCL_ROOT_x64)\3rd\BOOST\lib;$(PCL_ROOT_x64)\3rd\flann\lib;$(PCL_ROOT_x64)\3rd\VTK\lib;$(PCL_ROOT_x64)\3rd\OPENNI\Lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>qtmaind.lib;Qt5Cored.lib;Qt5Guid.lib;Qt5Widgetsd.lib;pcl_common_debug.lib;pcl_io_debug.lib;pcl_visualization_debug.lib;pcl_kdtree_debug.lib;pcl_features_debug.lib;pcl_surface_debug.lib;pcl_search_debug.lib;pcl_filters_debug.lib;OpenNI2.lib;vtkCommonCore-6.2.lib;vtkChartsCore-6.2.lib;vtkCommonDataModel-6.2.lib;vtkCommonMath-6.2.lib;vtkIOPLY-6.2.lib;vtkIOSQL-6.2.lib;vtkIOVideo-6.2.lib;vtkIOXML-6.2.lib;vtkIOXMLParser-6.2.lib;vtkjpeg-6.2.lib;vtkjsoncpp-6.2.lib;vtklibxml2-6.2.lib;vtkmetaio-6.2.lib;vtkNetCDF-6.2.lib;vtkNetCDF_cxx-6.2.lib;vtkoggtheora-6.2.lib;vtkParallelCore-6.2.lib;vtkpng-6.2.lib;vtkproj4-6.2.lib;vtkRenderingAnnotation-6.2.lib;vtkRenderingContext2D-6.2.lib;vtkRenderingContextOpenGL-6.2.lib;vtkRenderingCore-6.2.lib;vtkRenderingFreeType-6.2.lib;vtkRenderingFreeTypeOpenGL-6.2.lib;vtkRenderingGL2PS-6.2.lib;vtkRenderingImage-6.2.lib;vtkRenderingLabel-6.2.lib;vtkRenderingLIC-6.2.lib;vtkRenderingLOD-6.2.lib;vtkRenderingOpenGL-6.2.lib;vtkRenderingVolume-6.2.lib;vtkRenderingVolumeOpenGL-6.2.lib;vtksqlite-6.2.lib;vtksys-6.2.lib;vtktiff-6.2.lib;vtkverdict-6.2.lib;vtkViewsContext2D-6.2.lib;vtkViewsCore-6.2.lib;vtkViewsInfovis-6.2.lib;vtkzlib-6.2.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -157,6 +158,7 @@
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="XTion3DModelBuilder.cpp" />
     <ClCompile Include="xtionscanner.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -168,7 +170,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing xtionscanner.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
-      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets"</Command>
+      <Command Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB  "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets" "-I$(PCL_ROOT_x64)\include\pcl-1.8" "-I$(PCL_ROOT_x64)\3rd\BOOST\include\boost-1_57" "-I$(PCL_ROOT_x64)\3rd\EIGEN" "-I$(PCL_ROOT_x64)\3rd\flann\include" "-I$(PCL_ROOT_x64)\3rd\VTK\include\vtk-6.2" "-I$(PCL_ROOT_x64)\3rd\OPENNI\Include"</Command>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <Message Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Moc%27ing xtionscanner.h...</Message>
       <Outputs Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
@@ -201,6 +203,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_xtionscanner.h" />
+    <ClInclude Include="XTion3DModelBuilder.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.qrc">
