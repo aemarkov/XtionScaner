@@ -88,53 +88,57 @@ public:
         gridLayout->setObjectName(QStringLiteral("gridLayout"));
         XMin = new QSlider(GBFilter);
         XMin->setObjectName(QStringLiteral("XMin"));
-        XMin->setMinimum(-50);
-        XMin->setMaximum(0);
+        XMin->setMinimum(-100);
+        XMin->setMaximum(100);
         XMin->setSingleStep(1);
-        XMin->setValue(-50);
+        XMin->setValue(-100);
         XMin->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(XMin, 0, 1, 1, 1);
 
         XMax = new QSlider(GBFilter);
         XMax->setObjectName(QStringLiteral("XMax"));
-        XMax->setMaximum(50);
-        XMax->setValue(50);
+        XMax->setMinimum(-100);
+        XMax->setMaximum(100);
+        XMax->setValue(100);
         XMax->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(XMax, 0, 3, 1, 1);
 
         YMin = new QSlider(GBFilter);
         YMin->setObjectName(QStringLiteral("YMin"));
-        YMin->setMinimum(-50);
-        YMin->setMaximum(0);
-        YMin->setValue(-50);
+        YMin->setMinimum(-100);
+        YMin->setMaximum(100);
+        YMin->setValue(-100);
         YMin->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(YMin, 1, 1, 1, 1);
 
         YMax = new QSlider(GBFilter);
         YMax->setObjectName(QStringLiteral("YMax"));
-        YMax->setMaximum(50);
-        YMax->setValue(50);
+        YMax->setMinimum(-100);
+        YMax->setMaximum(100);
+        YMax->setPageStep(10);
+        YMax->setValue(100);
         YMax->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(YMax, 1, 3, 1, 1);
 
         ZMax = new QSlider(GBFilter);
         ZMax->setObjectName(QStringLiteral("ZMax"));
-        ZMax->setMaximum(50);
+        ZMax->setMinimum(-100);
+        ZMax->setMaximum(100);
         ZMax->setSingleStep(5);
-        ZMax->setValue(50);
+        ZMax->setValue(100);
         ZMax->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(ZMax, 2, 3, 1, 1);
 
         ZMin = new QSlider(GBFilter);
         ZMin->setObjectName(QStringLiteral("ZMin"));
-        ZMin->setMinimum(-50);
-        ZMin->setMaximum(0);
-        ZMin->setValue(-50);
+        ZMin->setMinimum(-100);
+        ZMin->setMaximum(100);
+        ZMin->setValue(-100);
         ZMin->setOrientation(Qt::Horizontal);
 
         gridLayout->addWidget(ZMin, 2, 1, 1, 1);

@@ -63,6 +63,8 @@ private:
 	bool is_added;
 	std::mutex viewer_mutex;										//mutex for cross-thread access to visualizer
 	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;	//visualizer
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cube;
+
 
 	// filtering
 	float x_min, x_max, y_min, y_max, z_min, z_max;					// box parameters
@@ -77,6 +79,7 @@ private:
 	void stream_function();											// streaming thread
 	static void stream_function_wrapper(XTion3DModelBuilder*);
 	void cloud_callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud);	
+	void init_cube();
 
 	
 };

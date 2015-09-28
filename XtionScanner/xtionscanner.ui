@@ -26,16 +26,16 @@
          <item row="0" column="1">
           <widget class="QSlider" name="XMin">
            <property name="minimum">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="maximum">
-            <number>0</number>
+            <number>100</number>
            </property>
            <property name="singleStep">
             <number>1</number>
            </property>
            <property name="value">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -44,11 +44,14 @@
          </item>
          <item row="0" column="3">
           <widget class="QSlider" name="XMax">
+           <property name="minimum">
+            <number>-100</number>
+           </property>
            <property name="maximum">
-            <number>50</number>
+            <number>100</number>
            </property>
            <property name="value">
-            <number>50</number>
+            <number>100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -58,13 +61,13 @@
          <item row="1" column="1">
           <widget class="QSlider" name="YMin">
            <property name="minimum">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="maximum">
-            <number>0</number>
+            <number>100</number>
            </property>
            <property name="value">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -73,11 +76,17 @@
          </item>
          <item row="1" column="3">
           <widget class="QSlider" name="YMax">
+           <property name="minimum">
+            <number>-100</number>
+           </property>
            <property name="maximum">
-            <number>50</number>
+            <number>100</number>
+           </property>
+           <property name="pageStep">
+            <number>10</number>
            </property>
            <property name="value">
-            <number>50</number>
+            <number>100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -86,14 +95,17 @@
          </item>
          <item row="2" column="3">
           <widget class="QSlider" name="ZMax">
+           <property name="minimum">
+            <number>-100</number>
+           </property>
            <property name="maximum">
-            <number>50</number>
+            <number>100</number>
            </property>
            <property name="singleStep">
             <number>5</number>
            </property>
            <property name="value">
-            <number>50</number>
+            <number>100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -103,13 +115,13 @@
          <item row="2" column="1">
           <widget class="QSlider" name="ZMin">
            <property name="minimum">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="maximum">
-            <number>0</number>
+            <number>100</number>
            </property>
            <property name="value">
-            <number>-50</number>
+            <number>-100</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>

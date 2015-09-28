@@ -18,6 +18,15 @@ XtionScanner::XtionScanner(QWidget *parent)
 	connect(ui.YMax, SIGNAL(valueChanged(int)), this, SLOT(YMax_ValueChanged(int)));
 	connect(ui.ZMin, SIGNAL(valueChanged(int)), this, SLOT(ZMin_ValueChanged(int)));
 	connect(ui.ZMax, SIGNAL(valueChanged(int)), this, SLOT(ZMax_ValueChanged(int)));
+	
+	xmin = convertToRange(ui.XMin->value());
+	xmax = convertToRange(ui.XMax->value());
+
+	ymin = convertToRange(ui.YMin->value());
+	ymax = convertToRange(ui.YMax->value());
+
+	zmin = convertToRange(ui.ZMin->value());
+	zmax = convertToRange(ui.ZMax->value());
 }
 
 
@@ -94,5 +103,5 @@ void XtionScanner::ZMax_ValueChanged(int value)
 //convert integer slider value to float
 float XtionScanner::convertToRange(int value)
 {
-	return value / 10.0f;
+	return value / 100.0f;
 }
