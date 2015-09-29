@@ -29,7 +29,6 @@ XTion3DModelBuilder::~XTion3DModelBuilder()
 void XTion3DModelBuilder::start_stream()
 {
 	is_stream_runing = true;
-	is_capturing = false;
 	is_added = false;
 	is_cube_updated = true;
 	init_cube();
@@ -59,23 +58,12 @@ void XTion3DModelBuilder::take_snapshot()
 	stop_stream();
 }
 
-// stop thread
+// stop Stream
 void XTion3DModelBuilder::stop_stream()
 {
 	is_stream_runing = false;
 	grabber->stop();
 	viewer->close();
-}
-
-// capturing thread wrapper
-void XTion3DModelBuilder::stream_function_wrapper(XTion3DModelBuilder* instance)
-{
-	instance->stream_function();
-}
-
-// capturing thread
-void XTion3DModelBuilder::stream_function()
-{
 }
 
 //callback to get cloud
@@ -293,4 +281,23 @@ void XTion3DModelBuilder::setup_box_filter(const float x_min, const float x_max,
 	this->z_min = z_min;
 	this->z_max = z_max;
 	init_cube();
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+/////////                            VISUALISATION                                        /////////
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+void XTion3DModelBuilder::show_result_cloud()
+{
+	//setup visualiser
+	boost::shared_ptr<pcl::visualization::PCLVisualizer> vw(new pcl::visualization::PCLVisualizer("3D Viewer"));
+
+	vw->setBackgroundColor(0, 0, 0);
+
+	vw->addPolygonMesh(triangles);
+
+	while (!vw->wasStopped()) {
+		vw->spinOnce(100);
+	}
 }

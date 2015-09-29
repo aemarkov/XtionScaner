@@ -54,6 +54,9 @@ void XtionScanner::MenuSave_Triggered()
 void XtionScanner::ButtonSnapshot_Clicked()
 {
 	modelBuilder.take_snapshot();
+	modelBuilder.box_filter();
+	modelBuilder.triangulation();
+	modelBuilder.show_result_cloud();
 }
 
 // -------------------- Cut off box sliders slots -----------------------------

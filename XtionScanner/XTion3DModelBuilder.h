@@ -47,6 +47,9 @@ public:
 	// * param[out] : triangles
 	void triangulation();
 
+	// show result
+	void show_result_cloud();
+
 	// IO
 	void save_snapshot(const char*);
 	void load_snapshot(const char*);
@@ -56,14 +59,13 @@ private:
 
 	// capturing
 	pcl::Grabber* grabber;
-	bool is_capturing;
 	bool is_stream_runing;
-
 	bool is_cube_updated;
 	bool is_added;
+
 	std::mutex viewer_mutex;										//mutex for cross-thread access to visualizer
 	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;	//visualizer
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cube;
+	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cube;					//cloud with cube for drawing
 
 
 	// filtering
@@ -76,10 +78,8 @@ private:
 	pcl::PolygonMesh triangles;										// mesh
 
 	// functions
-	void stream_function();											// streaming thread
-	static void stream_function_wrapper(XTion3DModelBuilder*);
 	void cloud_callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud);	
-	void init_cube();
+	void init_cube();												// draw cube into cloud
 
 	
 };
