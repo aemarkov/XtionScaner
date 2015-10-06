@@ -184,6 +184,11 @@ void XTion3DModelBuilder::load_snapshot(const char* snapshot_name)
 	puts("[Finish] Read snapshot from file");
 }
 
+void XTion3DModelBuilder::save_triangles(const char* name)
+{
+	pcl::io::save(name, triangles);
+}
+
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 /////////                            POST-PROCESSING                                      /////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
@@ -197,8 +202,26 @@ void XTion3DModelBuilder::triangulation()
 
 	puts("[Start] Calc normals");
 
-	// Create a KD-Tree
+
+	// Normal estimation*
+	pcl::NormalEstimation<pcl::PointXYZ, pcl::Normal> n;
+	pcl::PointCloud<pcl::Normal>::Ptr normals(new pcl::PointCloud<pcl::Normal>);
 	pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>);
+	tree->setInputCloud(cloud);
+	n.setInputCloud(cloud);
+	n.setSearchMethod(tree);
+	n.setKSearch(20);
+	n.compute(*normals);
+	//* normals should not contain the point normals + surface curvatures
+
+	// Concatenate the XYZ and normal fields*
+	pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals(new pcl::PointCloud<pcl::PointNormal>);
+	pcl::concatenateFields(*cloud, *normals, *cloud_with_normals);
+	//* cloud_with_normals = cloud + normals*/
+
+	//Smooth
+	// Create a KD-Tree
+	/*pcl::search::KdTree<pcl::PointXYZ>::Ptr tree(new pcl::search::KdTree<pcl::PointXYZ>);
 	pcl::PointCloud<pcl::PointNormal> mls_points;
 	pcl::MovingLeastSquares<pcl::PointXYZ, pcl::PointNormal> mls;
 	mls.setComputeNormals(true);
@@ -210,7 +233,7 @@ void XTion3DModelBuilder::triangulation()
 
 	mls.process(mls_points);
 	pcl::PointCloud<pcl::PointNormal>::Ptr cloud_with_normals(new pcl::PointCloud<pcl::PointNormal>);
-	pcl::copyPointCloud(mls_points, *cloud_with_normals);
+	pcl::copyPointCloud(mls_points, *cloud_with_normals);*/
 
 	puts("[Finish] Calc normals");
 	puts("[Start] Triangulation");

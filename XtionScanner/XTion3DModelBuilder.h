@@ -6,6 +6,7 @@
 
 #include <pcl/io/pcd_io.h>
 #include <pcl/visualization/cloud_viewer.h>
+#include <pcl/io/ply_io.h>
 #include <cstdio>
 
 // For triangulation
@@ -53,6 +54,7 @@ public:
 	// IO
 	void save_snapshot(const char*);
 	void load_snapshot(const char*);
+	void save_triangles(const char*);
 
 
 private:

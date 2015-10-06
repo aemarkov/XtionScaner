@@ -56,6 +56,7 @@ void XtionScanner::ButtonSnapshot_Clicked()
 	modelBuilder.take_snapshot();
 	modelBuilder.box_filter();
 	modelBuilder.triangulation();
+	modelBuilder.save_triangles("mesh.ply");
 	modelBuilder.show_result_cloud();
 }
 
