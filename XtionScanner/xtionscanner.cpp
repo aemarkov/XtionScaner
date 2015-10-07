@@ -39,7 +39,7 @@ XtionScanner::~XtionScanner()
 //----------------------- Menu option slots -----------------------------------
 void XtionScanner::MenuCapture_Triggered()
 {
-	modelBuilder.start_stream();
+	capture.StartCapturing();
 }
 
 void XtionScanner::MenuOpen_Triggered()
@@ -53,11 +53,22 @@ void XtionScanner::MenuSave_Triggered()
 //--------------------------- Button slots ------------------------------------
 void XtionScanner::ButtonSnapshot_Clicked()
 {
-	modelBuilder.take_snapshot();
-	modelBuilder.box_filter();
+	
+	auto cap = capture.TakeSnapshot();
+	XTion3DModelBuilder modelBuilder(cap);
+	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	modelBuilder.BoxFilter();
+	modelBuilder.Downsample(0.005);
+	modelBuilder.triangulation();
+	modelBuilder.save_triangles("out.ply");
+	modelBuilder.show_result_mesh();
+
+	//capture.StopCapturing();
+
+	/*modelBuilder.box_filter();
 	modelBuilder.triangulation();
 	modelBuilder.save_triangles("mesh.ply");
-	modelBuilder.show_result_cloud();
+	modelBuilder.show_result_mesh();*/
 }
 
 // -------------------- Cut off box sliders slots -----------------------------
@@ -65,44 +76,50 @@ void XtionScanner::XMin_ValueChanged(int value)
 {
 	xmin = convertToRange(value);
 	ui.LXMin->setText(QString::number(xmin));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
 void XtionScanner::XMax_ValueChanged(int  value)
 {
 	xmax = convertToRange(value);
 	ui.LXMax->setText(QString::number(xmax));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
 void XtionScanner::YMin_ValueChanged(int  value)
 {
 	ymin = convertToRange(value);
 	ui.LYMin->setText(QString::number(ymin));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
 void XtionScanner::YMax_ValueChanged(int value)
 {
 	ymax = convertToRange(value);
 	ui.LYMax->setText(QString::number(ymax));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
 void XtionScanner::ZMin_ValueChanged(int value)
 {
 	zmin = convertToRange(value);
 	ui.LZMin->setText(QString::number(zmin));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
 void XtionScanner::ZMax_ValueChanged(int value)
 {
 	zmax = convertToRange(value);
 	ui.LZMax->setText(QString::number(zmax));
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	setupCube();
 }
 
+
+void  XtionScanner::setupCube()
+{
+	
+	capture.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+}
 
 //convert integer slider value to float
 float XtionScanner::convertToRange(int value)

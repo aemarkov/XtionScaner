@@ -159,6 +159,7 @@
     </ClCompile>
     <ClCompile Include="main.cpp" />
     <ClCompile Include="XTion3DModelBuilder.cpp" />
+    <ClCompile Include="XTionCapture.cpp" />
     <ClCompile Include="xtionscanner.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -204,6 +205,7 @@
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_xtionscanner.h" />
     <ClInclude Include="XTion3DModelBuilder.h" />
+    <ClInclude Include="XTionCapture.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.qrc">

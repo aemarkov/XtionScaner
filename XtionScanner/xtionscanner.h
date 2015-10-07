@@ -3,6 +3,8 @@
 
 #include <QtWidgets/QMainWindow>
 #include "ui_xtionscanner.h"
+
+#include "XTionCapture.h"
 #include "XTion3DModelBuilder.h"
 
 #include <pcl/io/openni2_grabber.h>
@@ -20,10 +22,14 @@ private:
 	Ui::XtionScannerClass ui;
 
 	float xmin, xmax, ymin, ymax, zmin, zmax;
-	XTion3DModelBuilder modelBuilder;
+
+	//XTion3DModelBuilder modelBuilder;
+	XTionCapture capture;
+	
 
 	//convert integer slider value to float
 	float convertToRange(int);
+	void setupCube();
 
 public slots:
 
