@@ -20,6 +20,16 @@ XTionCapture::~XTionCapture()
 		StopCapturing();
 }
 
+void XTionCapture::SaveShanpshot(const char*)
+{
+
+}
+
+pcl::PointCloud<pcl::PointXYZRGB>::Ptr XTionCapture::LoadSnapshot(const char*)
+{
+	return NULL;
+}
+
 // start capturing
 void XTionCapture::StartCapturing()
 {

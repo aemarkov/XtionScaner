@@ -21,6 +21,10 @@
 #include <pcl/surface/mls.h>
 #include <pcl/filters/voxel_grid.h>
 
+#include <pcl/surface/on_nurbs/fitting_surface_tdm.h>
+#include <pcl/surface/on_nurbs/fitting_curve_2d_asdm.h>
+#include <pcl/surface/on_nurbs/triangulation.h>
+
 //threads
 #include <thread>
 #include <mutex>
