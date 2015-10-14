@@ -88,8 +88,7 @@ void XTion3DModelBuilder::Downsample(float leafSize)
 /////////                         RECONSTRUCTION                                          /////////
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-void
-PointCloud2Vector3d(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::on_nurbs::vector_vec3d &data)
+void PointCloud2Vector3d(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::on_nurbs::vector_vec3d &data)
 {
 	for (unsigned i = 0; i < cloud->size(); i++)
 	{
@@ -99,8 +98,7 @@ PointCloud2Vector3d(pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::on_nurbs::ve
 	}
 }
 
-void
-visualizeCurve(ON_NurbsCurve &curve, ON_NurbsSurface &surface, pcl::visualization::PCLVisualizer &viewer)
+void visualizeCurve(ON_NurbsCurve &curve, ON_NurbsSurface &surface, pcl::visualization::PCLVisualizer &viewer)
 {
 	pcl::PointCloud<pcl::PointXYZRGB>::Ptr curve_cloud(new pcl::PointCloud<pcl::PointXYZRGB>);
 
@@ -142,18 +140,18 @@ visualizeCurve(ON_NurbsCurve &curve, ON_NurbsSurface &surface, pcl::visualizatio
 //B-Splain
 void XTion3DModelBuilder::BSplain()
 {
-	/*//pcl::PointCloud<Point>::Ptr cloud(new pcl::PointCloud<Point>);
-	pcl::PCLPointCloud2 cloud2;
+	//pcl::PointCloud<Point>::Ptr cloud(new pcl::PointCloud<Point>);
+	//pcl::PCLPointCloud2 cloud2;
 	pcl::on_nurbs::NurbsDataSurface data;
 
-	fromPCLPointCloud2(cloud2, *snapshot);
+	//fromPCLPointCloud2(cloud2, *snapshot);
 	PointCloud2Vector3d(snapshot, data.interior);
 
 	//setup visualizer
-	pcl::visualization::PCLVisualizer viewer("B-spline surface fitting");
-	viewer.setSize(800, 600);
-	pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> handler(snapshot, 0, 255, 0);
-	viewer.addPointCloud<pcl::PointXYZ>(snapshot, handler, "cloud_cylinder");
+	//pcl::visualization::PCLVisualizer viewer("B-spline surface fitting");
+	//viewer.setSize(800, 600);
+	//pcl::visualization::PointCloudColorHandlerCustom<pcl::PointXYZ> handler(snapshot, 0, 255, 0);
+	//viewer.addPointCloud<pcl::PointXYZ>(snapshot, handler, "cloud_cylinder");
 
 	// fit B-spline surface
 
@@ -177,12 +175,12 @@ void XTion3DModelBuilder::BSplain()
 	//  fit.setQuiet (false); // enable/disable debug output
 
 	// mesh for visualization
-	pcl::PolygonMesh mesh;
-	pcl::PointCloud<pcl::PointXYZ>::Ptr mesh_cloud(new pcl::PointCloud<pcl::PointXYZ>);
-	std::vector<pcl::Vertices> mesh_vertices;
-	std::string mesh_id = "mesh_nurbs";
-	pcl::on_nurbs::Triangulation::convertSurface2PolygonMesh(fit.m_nurbs, mesh, mesh_resolution);
-	viewer.addPolygonMesh(mesh, mesh_id);
+	//pcl::PolygonMesh mesh;
+	//pcl::PointCloud<pcl::PointXYZ>::Ptr mesh_cloud(new pcl::PointCloud<pcl::PointXYZ>);
+	//std::vector<pcl::Vertices> mesh_vertices;
+	//std::string mesh_id = "mesh_nurbs";
+	//pcl::on_nurbs::Triangulation::convertSurface2PolygonMesh(fit.m_nurbs, mesh, mesh_resolution);
+	//viewer.addPolygonMesh(mesh, mesh_id);
 
 	// surface refinement
 	for (unsigned i = 0; i < refinement; i++)
@@ -191,9 +189,9 @@ void XTion3DModelBuilder::BSplain()
 		fit.refine(1);
 		fit.assemble(params);
 		fit.solve();
-		pcl::on_nurbs::Triangulation::convertSurface2Vertices(fit.m_nurbs, mesh_cloud, mesh_vertices, mesh_resolution);
-		viewer.updatePolygonMesh<pcl::PointXYZ>(mesh_cloud, mesh_vertices, mesh_id);
-		viewer.spinOnce();
+		//pcl::on_nurbs::Triangulation::convertSurface2Vertices(fit.m_nurbs, mesh_cloud, mesh_vertices, mesh_resolution);
+		//viewer.updatePolygonMesh<pcl::PointXYZ>(mesh_cloud, mesh_vertices, mesh_id);
+		//viewer.spinOnce();
 	}
 
 	// surface fitting with final refinement level
@@ -201,10 +199,15 @@ void XTion3DModelBuilder::BSplain()
 	{
 		fit.assemble(params);
 		fit.solve();
-		pcl::on_nurbs::Triangulation::convertSurface2Vertices(fit.m_nurbs, mesh_cloud, mesh_vertices, mesh_resolution);
-		viewer.updatePolygonMesh<pcl::PointXYZ>(mesh_cloud, mesh_vertices, mesh_id);
-		viewer.spinOnce();
-	}*/
+		//pcl::on_nurbs::Triangulation::convertSurface2Vertices(fit.m_nurbs, mesh_cloud, mesh_vertices, mesh_resolution);
+		//viewer.updatePolygonMesh<pcl::PointXYZ>(mesh_cloud, mesh_vertices, mesh_id);
+		//viewer.spinOnce();
+	}
+
+	pcl::on_nurbs::Triangulation::convertSurface2PolygonMesh(fit.m_nurbs, triangles, mesh_resolution);
+	//pcl::on_nurbs::Triangulation::convertSurface2Vertices(fit.m_nurbs, triangles, mesh_vertices, mesh_resolution);
+	//viewer.updatePolygonMesh<pcl::PointXYZ>(mesh_cloud, mesh_vertices, mesh_id);
+	//viewer.spinOnce();
 }
 
 // Triangulation

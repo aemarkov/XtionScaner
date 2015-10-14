@@ -59,10 +59,10 @@ void XtionScanner::ButtonSnapshot_Clicked()
 	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
 	modelBuilder.BoxFilter();
 	modelBuilder.Downsample(0.005);
-	//modelBuilder.BSplain();
+	modelBuilder.BSplain();
 	//modelBuilder.triangulation();
 	//modelBuilder.save_triangles("out.ply");
-	//modelBuilder.show_result_mesh();
+	modelBuilder.show_result_mesh();
 
 	//capture.StopCapturing();
 
