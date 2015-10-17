@@ -4,7 +4,7 @@
 #include <QtWidgets/QMainWindow>
 #include "ui_xtionscanner.h"
 
-#include "XTionCapture.h"
+#include "Capture/XtionCapture.h"
 #include "XTion3DModelBuilder.h"
 
 #include <pcl/io/openni2_grabber.h>

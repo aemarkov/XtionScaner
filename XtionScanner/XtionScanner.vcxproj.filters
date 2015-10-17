@@ -33,13 +33,34 @@
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
+    <Filter Include="Capture">
+      <UniqueIdentifier>{fb7f8d40-be76-4188-8084-2ee751125899}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Filters">
+      <UniqueIdentifier>{67ff1e4c-345a-4975-890e-fa2a438a28f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Transform">
+      <UniqueIdentifier>{687c6734-57bd-4663-b9f4-5678adeda786}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Visualize">
+      <UniqueIdentifier>{3392ee53-a837-455b-bce6-13fdcb6e3e32}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Pipeline">
+      <UniqueIdentifier>{45838ff4-8971-469f-b55f-a6706d7a78e3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI">
+      <UniqueIdentifier>{f7763627-b89c-400a-9076-4f4703b8cf26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GUI\MainForm">
+      <UniqueIdentifier>{9ca2897b-0e42-4a5d-b37d-9a2bebfd4e67}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="XTion3DModelBuilder.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="xtionscanner.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GUI\MainForm\xtionscanner.cpp">
+      <Filter>GUI\MainForm</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_xtionscanner.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -47,25 +68,34 @@
     <ClCompile Include="GeneratedFiles\Release\moc_xtionscanner.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\qrc_xtionscanner.cpp">
-      <Filter>Generated Files</Filter>
+    <ClCompile Include="Capture\XTionCapture.cpp">
+      <Filter>Capture</Filter>
     </ClCompile>
-    <ClCompile Include="XTion3DModelBuilder.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Pipeline\AbstractPipelineStage.cpp">
+      <Filter>Pipeline</Filter>
     </ClCompile>
-    <ClCompile Include="XTionCapture.cpp">
+    <ClCompile Include="GeneratedFiles\Debug\moc_AbstractPipelineStage.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_AbstractPipelineStage.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="xtionscanner.h">
-      <Filter>Header Files</Filter>
-    </CustomBuild>
     <CustomBuild Include="xtionscanner.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
     <CustomBuild Include="xtionscanner.qrc">
       <Filter>Resource Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="GUI\MainForm\xtionscanner.h">
+      <Filter>GUI\MainForm</Filter>
+    </CustomBuild>
+    <CustomBuild Include="Pipeline\AbstractPipelineStage.h">
+      <Filter>Pipeline</Filter>
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
@@ -75,8 +105,11 @@
     <ClInclude Include="XTion3DModelBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="XTionCapture.h">
-      <Filter>Header Files</Filter>
+    <ClInclude Include="Capture\XTionCapture.h">
+      <Filter>Capture</Filter>
+    </ClInclude>
+    <ClInclude Include="Pipeline\AbstractPipelineData.h">
+      <Filter>Pipeline</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
