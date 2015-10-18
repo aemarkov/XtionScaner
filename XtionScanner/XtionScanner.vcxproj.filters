@@ -54,6 +54,11 @@
     <Filter Include="GUI\MainForm">
       <UniqueIdentifier>{9ca2897b-0e42-4a5d-b37d-9a2bebfd4e67}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Generated Files\UnityDebug">
+      <UniqueIdentifier>{b6c8d7d5-6c18-4ffa-b7f7-02928609f7ab}</UniqueIdentifier>
+      <Extensions>cpp;moc</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="XTion3DModelBuilder.cpp">
@@ -62,17 +67,14 @@
     <ClCompile Include="GUI\MainForm\xtionscanner.cpp">
       <Filter>GUI\MainForm</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_xtionscanner.cpp">
-      <Filter>Generated Files\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="GeneratedFiles\Release\moc_xtionscanner.cpp">
-      <Filter>Generated Files\Release</Filter>
-    </ClCompile>
     <ClCompile Include="Capture\XTionCapture.cpp">
       <Filter>Capture</Filter>
     </ClCompile>
     <ClCompile Include="Pipeline\AbstractPipelineStage.cpp">
       <Filter>Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_AbstractPipelineStage.cpp">
       <Filter>Generated Files\Debug</Filter>
@@ -80,8 +82,20 @@
     <ClCompile Include="GeneratedFiles\Release\moc_AbstractPipelineStage.cpp">
       <Filter>Generated Files\Release</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GeneratedFiles\UnityDebug\moc_AbstractPipelineStage.cpp">
+      <Filter>Generated Files\UnityDebug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_xtionscanner.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_xtionscanner.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\UnityDebug\moc_xtionscanner.cpp">
+      <Filter>Generated Files\UnityDebug</Filter>
+    </ClCompile>
+    <ClCompile Include="Visualize\Visualizer.cpp">
+      <Filter>Visualize</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -110,6 +124,9 @@
     </ClInclude>
     <ClInclude Include="Pipeline\AbstractPipelineData.h">
       <Filter>Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="Visualize\Visualizer.h">
+      <Filter>Visualize</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

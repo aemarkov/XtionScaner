@@ -6,9 +6,12 @@
 
 #include "Capture/XtionCapture.h"
 #include "XTion3DModelBuilder.h"
+#include "Visualize/Visualizer.h"
 
 #include <pcl/io/openni2_grabber.h>
 #include <pcl/io/openni2/openni2_device.h>
+
+#include <Windows.h>
 
 class XtionScanner : public QMainWindow
 {
@@ -24,7 +27,8 @@ private:
 	float xmin, xmax, ymin, ymax, zmin, zmax;
 
 	//XTion3DModelBuilder modelBuilder;
-	XTionCapture capture;
+	//XTionCapture capture;
+	Visualizer* visualizer;
 	
 
 	//convert integer slider value to float

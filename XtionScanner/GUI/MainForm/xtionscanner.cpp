@@ -39,7 +39,8 @@ XtionScanner::~XtionScanner()
 //----------------------- Menu option slots -----------------------------------
 void XtionScanner::MenuCapture_Triggered()
 {
-	capture.StartCapturing();
+	//capture.StartCapturing();
+	visualizer = new Visualizer();
 }
 
 void XtionScanner::MenuOpen_Triggered()
@@ -53,16 +54,20 @@ void XtionScanner::MenuSave_Triggered()
 //--------------------------- Button slots ------------------------------------
 void XtionScanner::ButtonSnapshot_Clicked()
 {
+	//auto v = new Visualizer();
+	//Sleep(10000);
+	delete visualizer;
 	
-	auto cap = capture.TakeSnapshot();
-	XTion3DModelBuilder modelBuilder(cap);
-	modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
-	modelBuilder.BoxFilter();
-	modelBuilder.Downsample(0.005);
-	modelBuilder.BSplain();
+	
+	//auto cap = capture.TakeSnapshot();
+	//XTion3DModelBuilder modelBuilder(cap);
+	//modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	//modelBuilder.BoxFilter();
+	//modelBuilder.Downsample(0.005);
+	//modelBuilder.BSplain();
 	//modelBuilder.triangulation();
 	//modelBuilder.save_triangles("out.ply");
-	modelBuilder.show_result_mesh();
+	//modelBuilder.show_result_mesh();
 
 	//capture.StopCapturing();
 
@@ -119,7 +124,7 @@ void XtionScanner::ZMax_ValueChanged(int value)
 void  XtionScanner::setupCube()
 {
 	
-	capture.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	//capture.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
 }
 
 //convert integer slider value to float

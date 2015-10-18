@@ -244,6 +244,7 @@
     <ClCompile Include="GUI\MainForm\xtionscanner.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pipeline\AbstractPipelineStage.cpp" />
+    <ClCompile Include="Visualize\Visualizer.cpp" />
     <ClCompile Include="XTion3DModelBuilder.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -330,6 +331,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
     <ClInclude Include="Pipeline\AbstractPipelineData.h" />
+    <ClInclude Include="Visualize\Visualizer.h" />
     <ClInclude Include="XTion3DModelBuilder.h" />
   </ItemGroup>
   <ItemGroup>

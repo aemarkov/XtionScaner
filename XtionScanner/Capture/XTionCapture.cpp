@@ -39,8 +39,8 @@ void XTionCapture::StartCapturing()
 	init_cube();
 
 	//setup visualiser
-	viewer = boost::make_shared<pcl::visualization::PCLVisualizer>();
-	viewer->setBackgroundColor(0, 0, 0);
+	//viewer = boost::make_shared<pcl::visualization::PCLVisualizer>();
+	//viewer->setBackgroundColor(0, 0, 0);
 
 	//start grabber
 	grabber = new pcl::io::OpenNI2Grabber(""); // It's for autosetting device (Xtion)
@@ -49,11 +49,11 @@ void XTionCapture::StartCapturing()
 	grabber->start();
 
 
-	while (!viewer->wasStopped() && is_stream_runing) {
+	/*while (!viewer->wasStopped() && is_stream_runing) {
 		viewer_mutex.lock();
 		viewer->spinOnce(100);
 		viewer_mutex.unlock();
-	}
+	}*/
 	
 	StopCapturing();
 }

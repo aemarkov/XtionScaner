@@ -42,7 +42,7 @@ public:
 public slots:
 	
 	// Принимает объект и начинает обработку
-	void HandleRequest(AbstractPipelineData*);
+	virtual void HandleRequest(AbstractPipelineData*);
 
 private:
 

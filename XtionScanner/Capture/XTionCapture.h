@@ -11,11 +11,13 @@
 #include <thread>
 #include <mutex>
 
+#include "Pipeline/AbstractPipelineStage.h"
+
 /*
    Capturing point cloud from XTion with real-time visualisation 
    Open cloud from file
 */
-class XTionCapture
+class XTionCapture:AbstractPipelineStage
 {
 
 public:
