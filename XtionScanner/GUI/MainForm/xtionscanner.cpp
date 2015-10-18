@@ -41,10 +41,13 @@ void XtionScanner::MenuCapture_Triggered()
 {
 	//capture.StartCapturing();
 	visualizer = new Visualizer();
+	
+	int a = 2 + 3;
 }
 
 void XtionScanner::MenuOpen_Triggered()
 {
+	visualizer->HandleRequest(NULL);
 }
 
 void XtionScanner::MenuSave_Triggered()

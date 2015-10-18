@@ -9,6 +9,8 @@
 #include <boost/make_shared.hpp>
 #include <thread>
 #include <mutex>
+#include <boost/thread.hpp>
+
 #include <Windows.h>
 
 class Visualizer:AbstractPipelineStage
@@ -27,7 +29,7 @@ public:
 private:
 
 	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;			//Визуализатор
-	std::thread visualisation_thread;										//Поток, в котором крутится бесконечный цикл визуализатора
+	boost::thread visualisation_thread;										//Поток, в котором крутится бесконечный цикл визуализатора
 	std::mutex visualisation_mutex;											//Мьютекс, для синхронизации потоков
 	bool is_thread_closing;
 
