@@ -27,7 +27,7 @@ private:
 	float xmin, xmax, ymin, ymax, zmin, zmax;
 
 	//XTion3DModelBuilder modelBuilder;
-	//XTionCapture capture;
+	XTionCapture capture;
 	Visualizer* visualizer;
 	
 

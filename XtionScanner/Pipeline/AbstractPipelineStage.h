@@ -31,8 +31,9 @@
 
 #include <qobject.h>
 #include "AbstractPipelineData.h"
+#include <memory>
 
-class AbstractPipelineStage: QObject
+class AbstractPipelineStage: public QObject
 {
 	Q_OBJECT
 public:
@@ -42,7 +43,7 @@ public:
 public slots:
 	
 	// Принимает объект и начинает обработку
-	virtual void HandleRequest(AbstractPipelineData*);
+	virtual void HandleRequest(std::shared_ptr<AbstractPipelineData>) = 0;
 
 private:
 

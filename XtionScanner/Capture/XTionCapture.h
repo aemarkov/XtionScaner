@@ -12,22 +12,19 @@
 #include <mutex>
 
 #include "Pipeline/AbstractPipelineStage.h"
-
+#include "Pipeline/PipelineCloudData.h"
 /*
    Capturing point cloud from XTion with real-time visualisation 
    Open cloud from file
 */
-class XTionCapture:AbstractPipelineStage
+class XTionCapture:public AbstractPipelineStage
 {
+	Q_OBJECT
 
 public:
 
 	XTionCapture();
 	~XTionCapture();
-
-	//FILE IO
-	void SaveShanpshot(const char*);
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr LoadSnapshot(const char*);
 
 	//Camera input
 	void StartCapturing();									// start capture stream with visualisation
@@ -36,8 +33,8 @@ public:
 
 	pcl::PointCloud<pcl::PointXYZ>::Ptr GetCapturedCloud();	// returns stored cloud
 
-															// setup box filter
-	void setup_box_filter(const float x_min, const float x_max, const float y_min, const float y_max, const float z_min, const float z_max);
+signals:
+	void CloudChanged(std::shared_ptr<AbstractPipelineData>);
 	
 private:
 
@@ -46,16 +43,12 @@ private:
 
 	// grabbing and visualisation
 	pcl::Grabber* grabber;															// Grabber to grap point cloud
-	boost::shared_ptr<pcl::visualization::PCLVisualizer> viewer;					//visualizer
 	bool is_stream_runing;															// is capturing thread run
-	std::mutex viewer_mutex;														//mutex for cross-thread access to visualizer
 
-	// drawing cube
-	pcl::PointCloud<pcl::PointXYZRGB>::Ptr cube;									//cloud with cube for drawing
-	bool is_cube_updated;															// Is cube size changed
-	float x_min, x_max, y_min, y_max, z_min, z_max;									// box parameters
+	//Захват облака
+	void cloud_callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud);
 
-	// capturing functions
-	void cloud_callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud);		// callback which take cloud
-	void init_cube();																// draw cube into cloud
+	// Принимает объект и начинает обработку
+	// Это не нужно, но нужно не быть абстрактным
+	void HandleRequest(std::shared_ptr<AbstractPipelineData>);
 };

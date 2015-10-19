@@ -97,6 +97,18 @@
     <ClCompile Include="Visualize\Visualizer.cpp">
       <Filter>Visualize</Filter>
     </ClCompile>
+    <ClCompile Include="Pipeline\PipelineCloudData.cpp">
+      <Filter>Pipeline</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_XTionCapture.cpp">
+      <Filter>Generated Files\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_XTionCapture.cpp">
+      <Filter>Generated Files\Release</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\UnityDebug\moc_XTionCapture.cpp">
+      <Filter>Generated Files\UnityDebug</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.ui">
@@ -111,6 +123,9 @@
     <CustomBuild Include="Pipeline\AbstractPipelineStage.h">
       <Filter>Pipeline</Filter>
     </CustomBuild>
+    <CustomBuild Include="Capture\XTionCapture.h">
+      <Filter>Capture</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="GeneratedFiles\ui_xtionscanner.h">
@@ -119,14 +134,14 @@
     <ClInclude Include="XTion3DModelBuilder.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Capture\XTionCapture.h">
-      <Filter>Capture</Filter>
-    </ClInclude>
-    <ClInclude Include="Pipeline\AbstractPipelineData.h">
-      <Filter>Pipeline</Filter>
-    </ClInclude>
     <ClInclude Include="Visualize\Visualizer.h">
       <Filter>Visualize</Filter>
+    </ClInclude>
+    <ClInclude Include="Pipeline\PipelineCloudData.h">
+      <Filter>Pipeline</Filter>
+    </ClInclude>
+    <ClInclude Include="main.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

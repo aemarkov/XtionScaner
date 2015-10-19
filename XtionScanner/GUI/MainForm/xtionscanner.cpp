@@ -39,15 +39,14 @@ XtionScanner::~XtionScanner()
 //----------------------- Menu option slots -----------------------------------
 void XtionScanner::MenuCapture_Triggered()
 {
-	//capture.StartCapturing();
 	visualizer = new Visualizer();
-	
-	int a = 2 + 3;
+	bool a = connect(&capture, SIGNAL(CloudChanged(std::shared_ptr<AbstractPipelineData>)), visualizer, SLOT(HandleRequest(std::shared_ptr<AbstractPipelineData>)));
+	capture.StartCapturing();
+	visualizer->StartVisualizer();
 }
 
 void XtionScanner::MenuOpen_Triggered()
 {
-	visualizer->HandleRequest(NULL);
 }
 
 void XtionScanner::MenuSave_Triggered()
@@ -57,27 +56,6 @@ void XtionScanner::MenuSave_Triggered()
 //--------------------------- Button slots ------------------------------------
 void XtionScanner::ButtonSnapshot_Clicked()
 {
-	//auto v = new Visualizer();
-	//Sleep(10000);
-	delete visualizer;
-	
-	
-	//auto cap = capture.TakeSnapshot();
-	//XTion3DModelBuilder modelBuilder(cap);
-	//modelBuilder.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
-	//modelBuilder.BoxFilter();
-	//modelBuilder.Downsample(0.005);
-	//modelBuilder.BSplain();
-	//modelBuilder.triangulation();
-	//modelBuilder.save_triangles("out.ply");
-	//modelBuilder.show_result_mesh();
-
-	//capture.StopCapturing();
-
-	/*modelBuilder.box_filter();
-	modelBuilder.triangulation();
-	modelBuilder.save_triangles("mesh.ply");
-	modelBuilder.show_result_mesh();*/
 }
 
 // -------------------- Cut off box sliders slots -----------------------------
