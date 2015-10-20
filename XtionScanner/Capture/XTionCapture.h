@@ -32,9 +32,6 @@ public:
 	void StopCapturing();									// stop stream
 
 	pcl::PointCloud<pcl::PointXYZ>::Ptr GetCapturedCloud();	// returns stored cloud
-
-signals:
-	void CloudChanged(std::shared_ptr<AbstractPipelineData>);
 	
 private:
 

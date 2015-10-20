@@ -40,10 +40,19 @@ public:
 	AbstractPipelineStage();
 	~AbstractPipelineStage();
 
+	//Делает коннект к основному сигналу
+	virtual bool ConnectStage(AbstractPipelineStage* stage);
+
 public slots:
 	
 	// Принимает объект и начинает обработку
 	virtual void HandleRequest(std::shared_ptr<AbstractPipelineData>) = 0;
+
+signals:
+
+	// Основной сигнал
+	// Данные были изменены
+	void DataChanged(std::shared_ptr<AbstractPipelineData>);
 
 private:
 

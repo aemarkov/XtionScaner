@@ -7,6 +7,7 @@
 #include "Capture/XtionCapture.h"
 #include "XTion3DModelBuilder.h"
 #include "Visualize/Visualizer.h"
+#include "Filters/BoxFilter.h"
 
 #include <pcl/io/openni2_grabber.h>
 #include <pcl/io/openni2/openni2_device.h>
@@ -28,6 +29,7 @@ private:
 
 	//XTion3DModelBuilder modelBuilder;
 	XTionCapture capture;
+	BoxFilter boxFilter;
 	Visualizer* visualizer;
 	
 

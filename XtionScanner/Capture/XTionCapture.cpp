@@ -45,8 +45,8 @@ void XTionCapture::StopCapturing()
 //callback to get cloud
 void  XTionCapture::cloud_callback(const pcl::PointCloud<pcl::PointXYZ>::ConstPtr &cloud)
 {
-	pcl::copyPointCloud(*cloud, *snapshot);
-	emit CloudChanged(std::static_pointer_cast<AbstractPipelineData>(std::make_shared<PipelineCloudData>(snapshot)));
+	//pcl::copyPointCloud(*cloud, *snapshot);
+	emit DataChanged(std::static_pointer_cast<AbstractPipelineData>(std::make_shared<PipelineCloudData>(boost::const_pointer_cast<pcl::PointCloud<pcl::PointXYZ>>(cloud))));
 }
 
 

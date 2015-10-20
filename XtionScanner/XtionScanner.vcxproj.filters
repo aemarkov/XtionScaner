@@ -109,6 +109,9 @@
     <ClCompile Include="GeneratedFiles\UnityDebug\moc_XTionCapture.cpp">
       <Filter>Generated Files\UnityDebug</Filter>
     </ClCompile>
+    <ClCompile Include="Filters\BoxFilter.cpp">
+      <Filter>Filters</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.ui">
@@ -142,6 +145,9 @@
     </ClInclude>
     <ClInclude Include="main.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\BoxFilter.h">
+      <Filter>Filters</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -40,7 +40,9 @@ XtionScanner::~XtionScanner()
 void XtionScanner::MenuCapture_Triggered()
 {
 	visualizer = new Visualizer();
-	bool a = connect(&capture, SIGNAL(CloudChanged(std::shared_ptr<AbstractPipelineData>)), visualizer, SLOT(HandleRequest(std::shared_ptr<AbstractPipelineData>)));
+	bool a = capture.ConnectStage(static_cast<AbstractPipelineStage*>(&boxFilter));
+	a = boxFilter.ConnectStage(visualizer);
+
 	capture.StartCapturing();
 	visualizer->StartVisualizer();
 }
