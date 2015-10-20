@@ -29,12 +29,9 @@ public slots:
 private:
 
 	float x_min, x_max, y_min, y_max, z_min, z_max;		//Размеры параллелепипеда отсечения	
-	std::shared_ptr<PipelineCloudData> cloud;			//Облако для фильтрации
+	pcl::PointCloud <pcl::PointXYZ>::Ptr cloud;			//Облако для фильтрации
 
 	//Фильтрует
 	void filter();
-
-	//Проверка принадлежности точки координатам
-	bool isInBox(pcl::PointXYZ);
 
 };

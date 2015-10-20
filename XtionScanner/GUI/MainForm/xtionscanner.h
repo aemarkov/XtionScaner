@@ -55,6 +55,8 @@ public slots:
 	void ZMin_ValueChanged(int);
 	void ZMax_ValueChanged(int);
 
+
+
 };
 
 #endif // XTIONSCANNER_H

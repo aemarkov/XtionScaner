@@ -1,11 +1,19 @@
 #include "Visualizer.h"
 
-Visualizer::Visualizer():AbstractPipelineStage()
+Visualizer::Visualizer() : cube(new pcl::PointCloud < pcl::PointXYZRGB>()), AbstractPipelineStage()
 {
 	//Создаем окно визуализатора
 	viewer = boost::make_shared<pcl::visualization::PCLVisualizer>();
 	viewer->setBackgroundColor(0, 0, 0);
-	//viewer->addCube(-1, 0, -1, 0, -1, 0, 1, 0, 0, "1");
+
+	x_min = -1;
+	x_max = 1;
+	y_min = -1;
+	y_max = 1;
+	z_min = -1;
+	z_max = 1;
+	is_cube_updated = false;
+	init_cube();
 
 	//Создаем поток
 	//is_thread_closing = false;
@@ -25,9 +33,26 @@ void Visualizer::StartVisualizer()
 				viewer->addPointCloud(cloud->Cloud, "cloud");
 		}
 
+		if (is_cube_updated)
+		{
+			if (!viewer->updatePointCloud(cube, "cube"))
+				viewer->addPointCloud(cube, "cube");
+		}
+
 		viewer->spinOnce(100);
 		boost::this_thread::sleep(boost::posix_time::microseconds(100));
 	}
+}
+
+void Visualizer::setCutSize(float x_min, float x_max, float y_min, float y_max, float z_min, float z_max)
+{
+	this->x_min = x_min;
+	this->x_max = x_max;
+	this->y_min = y_min;
+	this->y_max = y_max;
+	this->z_min = z_min;
+	this->z_max = z_max;
+	init_cube();
 }
 
 Visualizer::~Visualizer()
@@ -72,80 +97,81 @@ void Visualizer::HandleRequest(std::shared_ptr<AbstractPipelineData>data)
 
 
 //Make point cloud with cube of specific size
-/*void  XTionCapture::init_cube()
+void  Visualizer::init_cube()
 {
-cube->clear();
-pcl::PointXYZRGB p(255, 0, 0);
-p.x = 0;
-p.y = 0;
-p.z = 0;
-//cube->push_back(p);
+	cube->clear();
+	pcl::PointXYZRGB p(255, 0, 0);
+	p.x = 0;
+	p.y = 0;
+	p.z = 0;
+	//cube->push_back(p);
 
-for (float x = x_min; x <= x_max; x += 0.01)
-{
-p.x = x;
+	for (float x = x_min; x <= x_max; x += 0.01)
+	{
+		p.x = x;
 
-p.y = y_max;
-p.z = z_max;
-cube->push_back(p);
+		p.y = y_max;
+		p.z = z_max;
+		cube->push_back(p);
 
-p.y = y_min;
-p.z = z_max;
-cube->push_back(p);
+		p.y = y_min;
+		p.z = z_max;
+		cube->push_back(p);
 
-p.y = y_min;
-p.z = z_min;
-cube->push_back(p);
+		p.y = y_min;
+		p.z = z_min;
+		cube->push_back(p);
 
-p.y = y_max;
-p.z = z_min;
-cube->push_back(p);
+		p.y = y_max;
+		p.z = z_min;
+		cube->push_back(p);
+	}
+
+
+	for (float z = z_min; z <= z_max; z += 0.01)
+	{
+		p.z = z;
+
+		p.y = y_max;
+		p.x = x_max;
+		cube->push_back(p);
+
+		p.y = y_min;
+		p.x = x_max;
+		cube->push_back(p);
+
+		p.y = y_min;
+		p.x = x_min;
+		cube->push_back(p);
+
+		p.y = y_max;
+		p.x = x_min;
+		cube->push_back(p);
+	}
+
+	for (float y = y_min; y <= y_max; y += 0.01)
+	{
+		p.y = y;
+
+		p.z = z_max;
+		p.x = x_max;
+		cube->push_back(p);
+
+		p.z = z_min;
+		p.x = x_max;
+		cube->push_back(p);
+
+		p.z = z_min;
+		p.x = x_min;
+		cube->push_back(p);
+
+		p.z = z_max;
+		p.x = x_min;
+		cube->push_back(p);
+	}
+
+	is_cube_updated = true;
+	//int a = cube->size();
+
+
 }
-
-
-for (float z = z_min; z <= z_max; z += 0.01)
-{
-p.z = z;
-
-p.y = y_max;
-p.x = x_max;
-cube->push_back(p);
-
-p.y = y_min;
-p.x = x_max;
-cube->push_back(p);
-
-p.y = y_min;
-p.x = x_min;
-cube->push_back(p);
-
-p.y = y_max;
-p.x = x_min;
-cube->push_back(p);
-}
-
-for (float y = y_min; y <= y_max; y += 0.01)
-{
-p.y = y;
-
-p.z = z_max;
-p.x = x_max;
-cube->push_back(p);
-
-p.z = z_min;
-p.x = x_max;
-cube->push_back(p);
-
-p.z = z_min;
-p.x = x_min;
-cube->push_back(p);
-
-p.z = z_max;
-p.x = x_min;
-cube->push_back(p);
-}
-
-//int a = cube->size();
-
-
-}*/

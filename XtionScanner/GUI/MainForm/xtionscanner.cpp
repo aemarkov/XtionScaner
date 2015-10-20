@@ -40,8 +40,8 @@ XtionScanner::~XtionScanner()
 void XtionScanner::MenuCapture_Triggered()
 {
 	visualizer = new Visualizer();
-	bool a = capture.ConnectStage(static_cast<AbstractPipelineStage*>(&boxFilter));
-	a = boxFilter.ConnectStage(visualizer);
+	bool a = capture.ConnectStage(visualizer);
+	//a = boxFilter.ConnectStage(visualizer);
 
 	capture.StartCapturing();
 	visualizer->StartVisualizer();
@@ -58,6 +58,11 @@ void XtionScanner::MenuSave_Triggered()
 //--------------------------- Button slots ------------------------------------
 void XtionScanner::ButtonSnapshot_Clicked()
 {
+	auto snapshot = capture.TakeSnapshot();
+	capture.StopCapturing();
+	boxFilter.HandleRequest(std::static_pointer_cast<AbstractPipelineData>(std::make_shared<PipelineCloudData>(snapshot)));
+	boxFilter.ConnectStage(visualizer);
+
 }
 
 // -------------------- Cut off box sliders slots -----------------------------
@@ -107,7 +112,9 @@ void XtionScanner::ZMax_ValueChanged(int value)
 void  XtionScanner::setupCube()
 {
 	
-	//capture.setup_box_filter(xmin, xmax, ymin, ymax, zmin, zmax);
+	//capture.setup_box_filter
+	boxFilter.setCutSize(xmin, xmax, ymin, ymax, zmin, zmax);
+	visualizer->setCutSize(xmin, xmax, ymin, ymax, zmin, zmax);
 }
 
 //convert integer slider value to float
