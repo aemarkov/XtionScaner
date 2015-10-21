@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 
 #include "Pipeline/AbstractPipelineStage.h"
 #include "Pipeline/AbstractPipelineData.h"
@@ -7,19 +7,20 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 
+#include "Helpers/PointSmoothMoveHelper.h"
 class PointSmoothMove:AbstractPipelineStage
 {
 
 public:
 	
-	// Задачет число связей между вершинами, которые будут сдвинуты
+	// Р—Р°РґР°С‡РµС‚ С‡РёСЃР»Рѕ СЃРІСЏР·РµР№ РјРµР¶РґСѓ РІРµСЂС€РёРЅР°РјРё, РєРѕС‚РѕСЂС‹Рµ Р±СѓРґСѓС‚ СЃРґРІРёРЅСѓС‚С‹
 	void SetRadius(int links);
 
-	//Сдвигает точку
+	//РЎРґРІРёРіР°РµС‚ С‚РѕС‡РєСѓ
 	void MovePoint(int column, int row, pcl::PointXYZ newPosition);
 
 public slots:
-	//Принимает данные от предыдушей ступени
+	//РџСЂРёРЅРёРјР°РµС‚ РґР°РЅРЅС‹Рµ РѕС‚ РїСЂРµРґС‹РґСѓС€РµР№ СЃС‚СѓРїРµРЅРё
 	void HandleRequest(std::shared_ptr<AbstractPipelineData>);
 
 private:
