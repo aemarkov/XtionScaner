@@ -266,6 +266,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Pipeline\AbstractPipelineStage.cpp" />
     <ClCompile Include="Pipeline\PipelineCloudData.cpp" />
+    <ClCompile Include="Transofrm\PointSmoothMove.cpp" />
+    <ClCompile Include="Transofrm\PolygonMeshBuilder.cpp" />
     <ClCompile Include="Visualize\Visualizer.cpp" />
     <ClCompile Include="XTion3DModelBuilder.cpp" />
   </ItemGroup>
@@ -380,6 +382,8 @@
     </CustomBuild>
     <ClInclude Include="main.h" />
     <ClInclude Include="Pipeline\PipelineCloudData.h" />
+    <ClInclude Include="Transofrm\PointSmoothMove.h" />
+    <ClInclude Include="Transofrm\PolygonMeshBuilder.h" />
     <ClInclude Include="Visualize\Visualizer.h" />
     <ClInclude Include="XTion3DModelBuilder.h" />
   </ItemGroup>

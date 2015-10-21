@@ -112,6 +112,12 @@
     <ClCompile Include="Filters\BoxFilter.cpp">
       <Filter>Filters</Filter>
     </ClCompile>
+    <ClCompile Include="Transofrm\PointSmoothMove.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
+    <ClCompile Include="Transofrm\PolygonMeshBuilder.cpp">
+      <Filter>Transform</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.ui">
@@ -148,6 +154,12 @@
     </ClInclude>
     <ClInclude Include="Filters\BoxFilter.h">
       <Filter>Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="Transofrm\PointSmoothMove.h">
+      <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Transofrm\PolygonMeshBuilder.h">
+      <Filter>Transform</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

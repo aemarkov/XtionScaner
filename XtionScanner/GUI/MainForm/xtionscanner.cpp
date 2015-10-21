@@ -49,6 +49,12 @@ void XtionScanner::MenuCapture_Triggered()
 
 void XtionScanner::MenuOpen_Triggered()
 {
+	pcl::PointCloud<pcl::PointXYZ>::Ptr cloud(new pcl::PointCloud<pcl::PointXYZ>());
+	int a = pcl::io::loadPCDFile("foot5.pcd", *cloud);
+	visualizer = new Visualizer();
+	boxFilter.ConnectStage(visualizer);
+	boxFilter.HandleRequest(std::static_pointer_cast<AbstractPipelineData>(std::make_shared<PipelineCloudData>(cloud)));
+	visualizer->StartVisualizer();
 }
 
 void XtionScanner::MenuSave_Triggered()
@@ -59,9 +65,21 @@ void XtionScanner::MenuSave_Triggered()
 void XtionScanner::ButtonSnapshot_Clicked()
 {
 	auto snapshot = capture.TakeSnapshot();
-	capture.StopCapturing();
-	boxFilter.HandleRequest(std::static_pointer_cast<AbstractPipelineData>(std::make_shared<PipelineCloudData>(snapshot)));
-	boxFilter.ConnectStage(visualizer);
+
+	FILE* f = fopen("foot5.obj", "w");
+
+	for (int x = 0; x < snapshot->width; x++)
+	{
+		for (int y = 0; y < snapshot->height; y++)
+		{
+			pcl::PointXYZ p = snapshot->at(x, y);
+			if (!isnan(p.x))
+				fprintf(f, "v %f %f %f\n", p.x, p.y, p.z);
+		}
+	}
+	fclose(f);
+
+	pcl::io::savePCDFile("foot5.pcd", *snapshot);
 
 }
 
@@ -110,8 +128,7 @@ void XtionScanner::ZMax_ValueChanged(int value)
 
 
 void  XtionScanner::setupCube()
-{
-	
+{	
 	//capture.setup_box_filter
 	boxFilter.setCutSize(xmin, xmax, ymin, ymax, zmin, zmax);
 	visualizer->setCutSize(xmin, xmax, ymin, ymax, zmin, zmax);
