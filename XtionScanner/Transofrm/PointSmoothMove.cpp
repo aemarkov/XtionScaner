@@ -5,6 +5,8 @@
 // Все точки, находящиеся на расстоянии links связей от точки currentPosition
 // Будут сдвинуты в том же направлении на расстояние, пропорциональное тому, на которое сдвигается точка currentPosition
 // ! Для модификации точек в функции использовались указатели
+// param{in} column - индекс столбца, в котором находится перемещаемая точка
+// param{in} row    - индекс строки, в которой находится перемещаемая точка
 void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 {
 	pcl::PointXYZ * currentPosition = &cloud->at(column, row);
@@ -31,10 +33,11 @@ void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 	// Сдвигаем центральную точку
 	*currentPosition = newPosition; // TODO Я не видел опреатора '=' у pcl::PointXYZ
 	// Волна от центральной точки распространяется дальше, затухая пропрционально пройденному расстоянию
+	// Некорректные точки (NaN) волна не трогает
 	pcl::PointXYZ * moved_point;
 	for (int link_lenght = 1; link_lenght <= links; link_lenght++)
-		for (int x = column - links; x <= column + links; x++)
-			for (int y = row - links; y <= row + links; y++)
+		for (int x = low_x_limit; x <= top_x_limit; x++)
+			for (int y = low_y_limit; y <= top_y_limit; y++)
 			{
 				moved_point = &cloud->at(column, row);
 				if (isNaN(*moved_point))
