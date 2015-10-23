@@ -1,8 +1,7 @@
 #include "PolygonMeshBuilder.h"
 
 // TODO исследовать все настройки алгоритма написать класс PolygonMeshBuilder с настройками
-void PolygonMeshBuilder::build(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, 
-																														pcl::PolygonMesh & mesh)
+void PolygonMeshBuilder::build(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::PolygonMesh & mesh)
 {
 	pcl::OrganizedFastMesh<pcl::PointXYZ> organized_fast_mesh;
 	organized_fast_mesh.setInputCloud(cloud);
