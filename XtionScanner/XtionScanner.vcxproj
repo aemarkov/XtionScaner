@@ -206,6 +206,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Filters\AveragingFilter.cpp" />
     <ClCompile Include="Capture\XTionCapture.cpp" />
     <ClCompile Include="Filters\BoxFilter.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_AbstractPipelineStage.cpp">
@@ -326,6 +327,7 @@
       <Outputs Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">.\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp</Outputs>
       <Command Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">"$(QTDIR)\bin\moc.exe"  "%(FullPath)" -o ".\GeneratedFiles\$(ConfigurationName)\moc_%(Filename).cpp"  -DUNICODE -DWIN32 -DWIN64 -DQT_DLL -DQT_CORE_LIB -DQT_GUI_LIB -DQT_WIDGETS_LIB "-I.\GeneratedFiles" "-I." "-I$(QTDIR)\include" "-I.\GeneratedFiles\$(ConfigurationName)\." "-I$(QTDIR)\include\QtCore" "-I$(QTDIR)\include\QtGui" "-I$(QTDIR)\include\QtWidgets"</Command>
     </CustomBuild>
+    <ClInclude Include="Filters\AveragingFilter.h" />
     <ClInclude Include="Filters\BoxFilter.h" />
     <ClInclude Include="GeneratedFiles\ui_xtionscanner.h" />
     <CustomBuild Include="GUI\MainForm\xtionscanner.h">
