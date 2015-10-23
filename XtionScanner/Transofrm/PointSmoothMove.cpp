@@ -20,9 +20,9 @@ void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 
 	// Находим границы для цикла так, чтобы не выйти за границы облака точек
 	float low_x_limit = std::min(column - links, 0);
-	float top_x_limit = std::min(column - links, (int)cloud->width - 1);
+	float top_x_limit = std::min(column + links, (int)cloud->width - 1);
 	float low_y_limit = std::min(row - links, 0);
-	float top_y_limit = std::min(column - links, (int)cloud->height - 1);
+	float top_y_limit = std::min(row + links, (int)cloud->height - 1);
 
 	/*
 	Действие алгоритма похоже на волну, расходящуюся от центра (о) к краям
@@ -35,18 +35,24 @@ void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 	// Волна от центральной точки распространяется дальше, затухая пропрционально пройденному расстоянию
 	// Некорректные точки (NaN) волна не трогает
 	pcl::PointXYZ * moved_point;
-	for (int link_lenght = 1; link_lenght <= links; link_lenght++)
-		for (int x = low_x_limit; x <= top_x_limit; x++)
-			for (int y = low_y_limit; y <= top_y_limit; y++)
-			{
-				moved_point = &cloud->at(column, row);
-				if (isNaN(*moved_point))
-					continue;
+	int link_length; // Длина связи вычисляется на основании
+									 // разности координат центральной (currentPosition) и обрабатываемой в цикле (movedPoint) точкой
+	for (int x = low_x_limit; x <= top_x_limit; x++)
+	{
+		for (int y = low_y_limit; y <= top_y_limit; y++)
+		{
+			moved_point = &cloud->at(column, row);
 
-				moved_point->x += dx / link_lenght;
-				moved_point->y += dy / link_lenght;
-				moved_point->z += dz / link_lenght;
+			bool current_point_is_central_point = x == column && y == row;
+			if (!isNaN(*moved_point) && !current_point_is_central_point)
+			{
+				link_length = std::max(column - x, row - y);
+				moved_point->x += dx / link_length;
+				moved_point->y += dy / link_length;
+				moved_point->z += dz / link_length;
 			}
+		}
+	}
 }
 
 // Задачет число связей между вершинами, которые будут сдвинуты
