@@ -118,6 +118,9 @@
     <ClCompile Include="Transofrm\PolygonMeshBuilder.cpp">
       <Filter>Transform</Filter>
     </ClCompile>
+    <ClCompile Include="Filters\AveragingFilter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="xtionscanner.ui">
@@ -160,6 +163,9 @@
     </ClInclude>
     <ClInclude Include="Transofrm\PolygonMeshBuilder.h">
       <Filter>Transform</Filter>
+    </ClInclude>
+    <ClInclude Include="Filters\AveragingFilter.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
