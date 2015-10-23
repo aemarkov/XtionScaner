@@ -382,6 +382,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='UnityDebug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='UnityDebug|Win32'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="Helpers\Helpers.h" />
     <ClInclude Include="main.h" />
     <ClInclude Include="Pipeline\PipelineCloudData.h" />
     <ClInclude Include="Transofrm\PointSmoothMove.h" />

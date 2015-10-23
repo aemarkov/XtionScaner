@@ -3,8 +3,7 @@
 #include "Pipeline/PipelineCloudData.h"
 #include "Pipeline/AbstractPipelineData.h"
 
-#include "Helpers/PointSmoothMoveHelper.h"
-#include "Helpers/AveragingFilterHelper.h"
+#include "Helpers/Helpers.h"
 
 #include "pcl/point_cloud.h"
 #include "pcl/point_types.h"
@@ -30,6 +29,6 @@ public slots:
 
 private:
 	pcl::PointCloud <pcl::PointXYZ>::Ptr cloud;			//Облако для фильтрации
-	void averagePoint(const int column, const int row, const int range = 1);
+	void averagePoint(const int column, const int row, const int rang=1);
 };
 

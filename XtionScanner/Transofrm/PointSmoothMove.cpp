@@ -31,7 +31,7 @@ void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 	x x x
 	*/
 	// Сдвигаем центральную точку
-	*currentPosition = newPosition; // TODO Я не видел опреатора '=' у pcl::PointXYZ
+	//currentPosition = newPosition; // TODO Я не видел опреатора '=' у pcl::PointXYZ
 	// Волна от центральной точки распространяется дальше, затухая пропрционально пройденному расстоянию
 	// Некорректные точки (NaN) волна не трогает
 	pcl::PointXYZ * moved_point;
@@ -44,7 +44,7 @@ void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 			moved_point = &cloud->at(column, row);
 
 			bool current_point_is_central_point = x == column && y == row;
-			if (!isNaN(*moved_point) && !current_point_is_central_point)
+			if (!Helpers::isNaN(*moved_point) && !current_point_is_central_point)
 			{
 				link_length = std::max(column - x, row - y);
 				moved_point->x += dx / link_length;

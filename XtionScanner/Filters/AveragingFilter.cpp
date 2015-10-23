@@ -14,7 +14,7 @@ AveragingFilter::~AveragingFilter()
 //Принимает данные от предыдушей ступени
 void AveragingFilter::HandleRequest(std::shared_ptr<AbstractPipelineData> data)
 {
-	cloud = std::const_pointer_cast<PipelineCloudData>(data)->Cloud;
+	cloud = std::static_pointer_cast<PipelineCloudData>(data)->Cloud;
 }
 
 
@@ -23,7 +23,7 @@ x x x
 x o x
 x x x
 */
-void AveragingFilter::averagePoint(const int column, const int row, const int range = 1)
+void AveragingFilter::averagePoint(const int column, const int row, const int range)
 {
 	std::vector <float> x_all, y_all, z_all;
 
@@ -40,7 +40,7 @@ void AveragingFilter::averagePoint(const int column, const int row, const int ra
 			{
 				current_point = cloud->at(x, y);
 				bool current_point_is_averaging_point = x == column && y == row;
-				if (!isNaN(current_point) && !current_point_is_averaging_point)
+				if (!Helpers::isNaN(current_point) && !current_point_is_averaging_point)
 				{
 					x_all.push_back(current_point.x);
 					y_all.push_back(current_point.y);
@@ -48,7 +48,7 @@ void AveragingFilter::averagePoint(const int column, const int row, const int ra
 				}
 			}
 
-	cloud->at(column, row) = pcl::PointXYZ(getAverage(x_all), getAverage(z_all), getAverage(z_all));
+	cloud->at(column, row) = pcl::PointXYZ(Helpers::getAverage<float>(x_all), Helpers::getAverage<float>(z_all), Helpers::getAverage<float>(z_all));
 }
 
 void AveragingFilter::filter()

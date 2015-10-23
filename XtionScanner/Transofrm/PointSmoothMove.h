@@ -7,7 +7,7 @@
 #include <pcl/point_types.h>
 #include <pcl/point_cloud.h>
 
-#include "Helpers/PointSmoothMoveHelper.h"
+#include "Helpers/Helpers.h"
 class PointSmoothMove:AbstractPipelineStage
 {
 
