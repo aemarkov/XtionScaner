@@ -34,4 +34,9 @@ public:
 
 		return summ / count;
 	}
+
+	static float distance(const pcl::PointXYZ & p_1, const pcl::PointXYZ & p_2)
+	{
+		return sqrt(pow(p_2.x - p_1.x, 2) + pow(p_2.y - p_1.y, 2) + pow(p_2.z - p_1.z, 2));
+	}
 };

@@ -10,7 +10,7 @@
 void PointSmoothMove::MovePoint(int column, int row, pcl::PointXYZ newPosition)
 {
 	pcl::PointXYZ * currentPosition = &cloud->at(column, row);
-	float distance = pcl::geometry::distance(*currentPosition, newPosition);
+	float distance = Helpers::distance(*currentPosition, newPosition);
 	
 	// Берем каждую составляющую координаты и осуществляем сдвиг по ней.
 	float dx = currentPosition->x - newPosition.x;
