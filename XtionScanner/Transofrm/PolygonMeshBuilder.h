@@ -6,25 +6,10 @@
 
 #include <pcl/surface/organized_fast_mesh.h>
 
-#include <pcl/common/common.h>
-#include <pcl/features/normal_3d_omp.h>
-#include <pcl/surface/mls.h>
-#include <pcl/surface/poisson.h>
-#include <pcl/io/vtk_io.h>
-
-
+// TODO найти способ копировать облако точек, сохраняя его организованность
 class PolygonMeshBuilder
 {
-public:
-	PolygonMeshBuilder(pcl::PointCloud<pcl::PointXYZ>::Ptr point_cloud);
-	~PolygonMeshBuilder();
-
-	void build();
-	void reconstruction();
-
-	pcl::PolygonMesh get_mesh();
-
-private:
-	pcl::PointCloud<pcl::PointXYZ>::Ptr _point_cloud;
-	pcl::PolygonMesh _mesh;
+	//param{in} cloud - organized point cloud
+	//param{out} mesh - PolygonMesh
+	static void build(const pcl::PointCloud<pcl::PointXYZ>::Ptr cloud, pcl::PolygonMesh & mesh);
 };
